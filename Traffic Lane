@@ -1,0 +1,137 @@
+/*
+@authors MAGNETO
+@date    2022-04-24 18:27:21
+*/
+
+#include <bits/stdc++.h>
+#pragma GCC optimize("Ofast")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
+#pragma GCC optimize("unroll-loops")
+//#include <ext/pb_ds/assoc_container.hpp> // Common file
+//#include <ext/pb_ds/tree_policy.hpp> // Including tree_order_statistics_node_update
+
+//using namespace __gnu_pbds;
+//template<class T> using ordered_set = tree<T, null_type , less<T> , rb_tree_tag , tree_order_statistics_node_update>;
+
+using namespace std; 
+
+#define FAST ios_base::sync_with_stdio(false);cin.tie(nullptr);
+#define endl                '\n'
+#define ll                  long long
+#define pb                  push_back
+#define ppb                 pop_back
+#define pf                  push_front
+#define ppf                 pop_front
+#define all(x)              (x).begin(),(x).end()
+#define uniq(v)             (v).erase(unique(all(v)),(v).end())
+#define sz(x)               (int)((x).size())
+#define F                  first
+#define S                  second
+#define pii                 pair<int,int>
+#define pll                 pair<long long, long long>
+#define rep(i,a,b)          for(auto i=a;i<b;i++)
+#define rev(i,a,b)          for(auto i=a;i>=b;i--)
+#define mem1(a)             memset(a,-1,sizeof(a))
+#define mem0(a)             memset(a,0,sizeof(a))
+#define debug(x)            cerr << #x << " = " << x << endl;
+#define debug2(x, y)        {cerr <<#x<<" = " <<x<<", "<<#y <<" = " <<y <<"\n";}
+#define debug3(x, y, z)     {cerr <<#x<<" = " <<x<<", "<<#y <<" = " <<y <<", "<<#z<<" = "<<z<<"\n";}
+#define debug4(x, y, z, w)  {cerr <<#x<<" = " <<x<<", "<<#y <<" = " <<y <<", "<<#z<<" = "<<z<<", "<<#w << " = " <<w <<"\n";}
+#define ppc                 __builtin_popcount
+#define ppcll               __builtin_popcountll
+#define lcm(a,b)            a*b/__gcd(a,b)
+
+//__builtin_popcount = int
+//__builtin_popcountl = long int
+//__builtin_popcountll = long long
+
+template<typename T ,typename T2>
+auto _min ( T a , T2 b ) { return a > b ? b : a ; }
+template < typename T ,  typename... Ts >
+ auto _min( T first , Ts... last ){ return  _min(first, _min(last...)); }
+
+template<typename T, typename T2 >
+auto _max ( T a , T2 b ) { return a < b ? b : a ; }
+template < typename T ,  typename... Ts > 
+auto _max( T first , Ts... last ){ return  _max(first, _max(last...)); }
+
+template<class T,typename T1>void amax(T &a,T1 b){if(b>a)a=b;}
+template<typename T,typename T1>void amin(T &a,T1 b){if(b<a)a=b;}
+
+template<class T, class S> std::ostream& operator<<(std::ostream &os, const std::pair<T, S> &t) {
+  os<<"("<<t.first<<",   "<<t.second<<")";
+  return os;
+}
+template<typename T> ostream& operator<< (ostream& out, const vector<T>& v) {
+  out << "["; size_t last = v.size() - 1; for(size_t i = 0; i < v.size(); ++i) {
+  out << v[i]; if (i != last) out << ", "; } out << "]"; return out;
+}
+
+int solve()
+{
+string s;
+cin >> s;
+s = s.substr(1, s.length()-2);
+char str[10000];
+int id = 0;
+for(auto e : s){
+str[id++] = e;
+}
+
+char *ptr = strtok( str, ","); 
+vector<int>a;
+while (ptr != NULL)  
+    {  
+      a.pb(stoi(ptr));
+      ptr = strtok (NULL, " , ");  
+    }  
+
+    // cout << a << endl;
+
+    set<int>st;
+    for(int ele : a)
+    st.insert(ele);
+
+  int ans = 0;
+    for(auto t : st){
+      ans+= t;
+    }
+    return ans;
+}
+
+int32_t main()
+{
+#ifndef ONLINE_JUDGE
+ freopen("input.txt", "r+", stdin);
+ freopen("output.txt", "w+", stdout);
+#endif
+FAST
+int T=1;
+cin>>T;
+int _= 1;
+set<pair<int, int>>ans;
+
+
+while(T--)
+{
+int ele = solve();
+ans.insert({ele, _++});
+}
+// cout << "\n\nTime elapsed: " << 1.0 * clock() / CLOCKS_PER_SEC << " Sec\n";
+cout<< "[";
+int sz = ans.size();
+int c= 1;
+for(auto e: ans){
+  if(c != sz)
+  cout << e.second << "," << e.first  << ",";
+  else
+  cout << e.second << "," << e.first ;
+  c++;
+}
+cout << ']' << endl;
+}
+
+/*
+OUTPUT: 
+[1,490,6,533,9,624,2,674,4,1284,3,1288,7,1436,5,1568,8,1625,11,1774,12,2351,19,2398,18,2597,17,2602,13,2755,15,2876,16,2936,14,2974,20,3209,10,8758,40,44212,27,46919,33,47663,38,48129,37,48448,32,48496,30,48583,28,48619,29,48900,24,48951,34,48990,21,49010,35,49039,39,49323,36,49626,26,49679,31,49760,23,49948,22,50355,25,50411]
+*/
