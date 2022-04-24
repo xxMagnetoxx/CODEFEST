@@ -116,7 +116,7 @@ else{
   ftm += tm/100;
 }
 
-if(ftm > 12){
+if(ftm > 12.99){
   ftm -= 12;  
 }
 
@@ -131,13 +131,13 @@ int32_t main()
 {
 FAST
 int T=1;
-cin>>T;
 
 #ifndef ONLINE_JUDGE
  freopen("input.txt", "r+", stdin);
   freopen("output.txt", "w+", stdout);
 #endif
 
+cin>>T;
 while(T--)
 {
 solve();
